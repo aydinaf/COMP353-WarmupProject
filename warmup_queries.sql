@@ -14,21 +14,23 @@ foreign key (regionName)
 primary key(countryID)
 );
 
-CREATE TABLE Manufacturers (
-manufacturerName varchar(255) primary key
-);
-
 CREATE TABLE Vaccines (
 vaccineID int not null auto_increment,
 vaccineName varchar(255) not null,
-manufacturer varchar(255) not null,
-foreign key (manufacturer)
-	references Manufacturers(manufacturerName)
-    on delete cascade,
 primary key(vaccineID)
 );
 
-CREATE TABLE Vaccinations (
-countryID int,
+CREATE TABLE Cases (
+caseID int not null auto_increment,
+countryID int not null,
 vaccineID int,
+infections int not null,
+deaths int not null,
+foreign key (countryID)
+	references Countries(countryID)
+    on delete cascade,
+foreign key (vaccineID)
+	references Vaccines(vaccineID)
+    on delete cascade,
+primary key(caseID)
 );
