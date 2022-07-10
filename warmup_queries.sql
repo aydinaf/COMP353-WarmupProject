@@ -7,7 +7,6 @@ countryID int not null auto_increment,
 countryName varchar(255) not null,
 regionName varchar(255) not null,
 population int not null,
-totalCovidDeaths int not null,
 foreign key (regionName)
 	references Regions(regionName)
     on delete cascade,
